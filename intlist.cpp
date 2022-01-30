@@ -1,6 +1,6 @@
 // intlist.cpp
 // Implements class IntList
-// YOUR NAME(S), AND DATE
+// Cory Zhao; 1/30/22
 
 #include "intlist.h"
 
@@ -20,28 +20,73 @@ IntList::~IntList() {
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+
+    for (Node* i = first; i != nullptr; i = i->next) {
+        sum += i->info;
+    }
+    return sum;
 }
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+    for (Node* i = first; i != nullptr; i = i->next) {
+        if (i->info == value) {
+            return true;
+        }
+    }
+    return false; 
 }
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int max;
+
+    if (first == nullptr) {
+        return 0;
+    }
+    max = first->info;
+
+    for (Node* i = first; i != nullptr; i = i->next) {
+        if (i->info > max) {
+            max = i->info;
+        }
+    }
+    return max; 
+
 }
 
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+    double sum = 0;
+    int count = 0;
+
+    if (first == nullptr) {
+        return 0;
+    }
+
+    for (Node* i = first; i != nullptr; i = i->next) {
+        sum += i->info;
+        count++;
+    }
+
+    return sum / count; 
 }
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-    // IMPLEMENT
+/*    if (first == nullptr) {
+        first->info = value;
+        first->next = nullptr;
+    }
+    else {
+        Node* n = new Node;
+        n->info = value;
+        n->next = first;
+        first = n;
+    }
+    */
 }
 
 //Assignment operator should copy the list from the source
