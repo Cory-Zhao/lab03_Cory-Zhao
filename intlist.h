@@ -26,7 +26,7 @@ public:
 
     IntList& operator=(const IntList& source); //overloaded  (NO CHANGE)
 
-private:
+//private:
 
     // (Optional) You can add some private helper functions here.
 

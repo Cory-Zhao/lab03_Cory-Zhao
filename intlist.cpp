@@ -6,15 +6,40 @@
 
 #include <iostream>
 using std::cout;
+using std::endl;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-    //IMPLEMENT THIS
+    if (source.first == nullptr) {
+        this->first = nullptr;
+    }
+    else {
+        Node* n = new Node;
+        first = n;
+        for (Node* i = source.first; i != nullptr; i = i->next) {
+            if (i->next == nullptr) {
+                n->info = i->info;
+                n->next = nullptr;
+            }
+            else {
+                n->info = i->info;
+                Node *p = new Node;
+                n->next = p;
+                n = p;
+            }
+        }
+    }
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+    Node* n;
+
+    while (first != nullptr) {
+        n = first->next;
+        delete first;
+        first = n;
+    }
 }
 
 
@@ -76,9 +101,11 @@ double IntList::average() const {
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-/*    if (first == nullptr) {
-        first->info = value;
-        first->next = nullptr;
+    if (first == nullptr) {
+        Node* n = new Node;
+        n->info = value;
+        n->next = nullptr;
+        first = n;
     }
     else {
         Node* n = new Node;
@@ -86,13 +113,31 @@ void IntList::insertFirst(int value) {
         n->next = first;
         first = n;
     }
-    */
+    
 }
 
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
-    //IMPLEMENT
+    if (source.first == nullptr) {
+        this->first = nullptr;
+    }
+    else {
+        Node* n = new Node;
+        this->first = n;
+        for (Node* i = source.first; i != nullptr; i = i->next) {
+            if (i->next == nullptr) {
+                n->info = i->info;
+                n->next = nullptr;
+            }
+            else {
+                n->info = i->info;
+                Node *p = new Node;
+                n->next = p;
+                n = p;
+            }
+        }
+    }
     return *this;
 }
 

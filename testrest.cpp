@@ -15,13 +15,17 @@ void test_copyconstructor(){
     for(int i = 0; i<5; i++){
         list1.append(arr[i]);
     }
-
+    
     IntList list2(list1);
+
     assert(list1.count()== 5);
+
     assert(list2.count()==list1.count());
+
     for(int i = 0; i<5; i++){
         list1.append(2*arr[i]);
     }
+
     assert(list1.count()== 10);
     assert(list2.count()== 5);
 
@@ -53,8 +57,9 @@ void test_assignmentOperator(){
 
     list1.append(100);
     assert((list2.sum()+100) == list1.sum());
-
+    
     list1 = IntList();
+
     assert(list1.sum() == 0);
     assert(list1.count() == 0);
 

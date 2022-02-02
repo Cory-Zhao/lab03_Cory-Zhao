@@ -67,6 +67,8 @@ int main(int argc, char *argv[]) {
     cout << "   List 2 after insertFirst(3), then insertFirst(1): \n   ";
     list2.insertFirst(3);
     list2.insertFirst(1);
+    
+
     list2.print();
     cout << endl;
 
